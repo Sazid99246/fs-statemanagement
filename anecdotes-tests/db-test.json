@@ -8,7 +8,7 @@
     {
       "content": "There are two hard things in computer science",
       "id": "4",
-      "votes": 1
+      "votes": 3
     },
     {
       "content": "Untested code is broken code",
@@ -25,5 +25,6 @@
       "id": "1",
       "votes": 7
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

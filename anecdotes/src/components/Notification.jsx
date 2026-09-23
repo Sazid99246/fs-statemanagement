@@ -1,6 +1,14 @@
+import { useNotification } from '../notificationStore'
+
 const Notification = () => {
+  const notification = useNotification()
+
+  if (!notification) {
+    return null
+  }
+
   const style = {
-    border: "solid",
+    border: 'solid',
     padding: 10,
     borderWidth: 1,
     marginBottom: 10,
@@ -8,7 +16,7 @@ const Notification = () => {
 
   return (
     <div style={style} data-testid="notification">
-      render here notification...
+      {notification}
     </div>
   )
 }

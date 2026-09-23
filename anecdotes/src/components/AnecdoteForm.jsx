@@ -21,7 +21,7 @@ const AnecdoteForm = () => {
 
       <form onSubmit={addAnecdote}>
         <div>
-          <input ref={inputRef} data-testid="new" />
+          <input ref={inputRef} data-testid="new" name='anecdote' />
         </div>
         <button>create</button>
       </form>
