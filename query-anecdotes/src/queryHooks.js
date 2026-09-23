@@ -14,6 +14,11 @@ const createAnecdote = async (newAnecdote) => {
     body: JSON.stringify(newAnecdote),
   })
 
+  if (!response.ok) {
+    const error = await response.json()
+    throw new Error(error.error)
+  }
+
   return response.json()
 }
 
@@ -40,24 +45,29 @@ export const useAnecdotes = () => {
   })
 }
 
-export const useCreateAnecdote = () => {
+export const useCreateAnecdote = (onSuccess, onError) => {
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: createAnecdote,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['anecdotes'] })
+      onSuccess(data)
+    },
+    onError: (error) => {
+      onError(error)
     },
   })
 }
 
-export const useVoteAnecdote = () => {
+export const useVoteAnecdote = (onSuccess) => {
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: updateAnecdote,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['anecdotes'] })
+      onSuccess(data)
     },
   })
 }
