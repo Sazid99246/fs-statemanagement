@@ -1,16 +1,11 @@
-const AnecdoteForm = () => {
-  const onCreate = (event) => {
-    event.preventDefault()
-    const content = event.target.anecdote.value
-    event.target.reset()
-    console.log('new anecdote')
-  }
-
+const AnecdoteForm = ({ addAnecdote }) => {
   return (
     <div>
       <h3>create new</h3>
-      <form onSubmit={onCreate}>
+
+      <form onSubmit={addAnecdote}>
         <input name="anecdote" />
+
         <button type="submit">create</button>
       </form>
     </div>

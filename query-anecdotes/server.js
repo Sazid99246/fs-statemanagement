@@ -1,3 +1,4 @@
+/* global process */
 import { randomUUID } from "node:crypto"
 import { App } from "@tinyhttp/app"
 import { cors } from "@tinyhttp/cors"
